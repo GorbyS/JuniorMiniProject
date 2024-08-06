@@ -1,19 +1,22 @@
 {
-  "name": "testApi",
+  "name": "fetch-clients-data",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/wraithyy/JuniorMiniProject.git",
-  "author": "Josef Kvapil <jkvapil@trask.cz>",
   "license": "MIT",
-  "private": "true",
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
-  "scripts":{
-    "start": "yarn concurrently \"yarn workspace frontend start\" \"yarn workspace frontend start\" "
+  "private": true,
+  "author": "Sergey Gorbachev <sgorbachev@thetrask.com>",
+  "scripts": {
+    "start": "npm run concurrently \"npm run --prefix frontend start\" \"npm run --prefix backend start\""
   },
   "devDependencies": {
-    "concurrently": "^7.1.0"
+    "concurrently": "^7.1.0",
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fetch-clients-data": "file:",
+    "mongoose": "^8.4.3"
   }
 }
