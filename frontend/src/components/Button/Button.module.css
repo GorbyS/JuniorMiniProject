@@ -7,21 +7,21 @@
     font-weight: bold;
   }
   
-  button:hover {
+button:hover {    
     opacity: 0.8;  
-  }
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
   
-  button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
-  }
   
-  
-  .button:disabled {
+.button:disabled {  
     cursor: not-allowed;
-  }
+}
   
-  .button.active {
+.button.active {
     background: #0056b3;
     color: #fff;
-  }
+}

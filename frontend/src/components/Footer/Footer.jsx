@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './Footer.module.css';
 
 export default function Footer() {
   const handleRickroll = (e) => {
@@ -29,10 +30,10 @@ export default function Footer() {
   }
 
   return (
-    <footer className="form-footer">
-      <div className="footer-content">
+    <footer className={classes.footer}>
+      <div className={classes['footer-content']}>
         <p>&copy; 2024 Segrey Gorbachev</p>
-        <nav className="footer-nav">
+        <nav className={classes['footer-nav']}>
           <a href="#" onClick={handleRickroll}>Privacy Policy</a>
           <a href="#" onClick={handleRickroll}><b>Rickroll yourself</b></a>
           <a href="#" onClick={handleRickroll}>Contact Us</a>

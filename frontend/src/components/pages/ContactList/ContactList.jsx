@@ -1,23 +1,25 @@
 import React, {useState, useEffect} from 'react';
+import classes from './ContactList.module.css';
 
 
 export default function ContactList() {
+
     const [clients, setClients] = useState([])
     const [serverMessage, setServerMessage] = useState("")
     const [selectedClient, setSelectedClient] = useState(null)
 
     useEffect(() => {
+        const addingClient = async () => {
+            setServerMessage("Loading data")
+            const data = await fetch("http://localhost:5000/get-client")
+            const finalData = await data.json()
+            const {msg, documents} = finalData
+            setClients(documents)
+            setServerMessage(msg)
+        }
         addingClient();
     },[])
 
-    const addingClient = async () => {
-        setServerMessage("Loading data")
-        const data = await fetch("http://localhost:5000/get-client")
-        const finalData = await data.json()
-        const {msg, documents} = finalData
-        setClients(documents)
-        setServerMessage(msg)
-    }
 
     const deleteClient = async (clientId) => {
         try {
@@ -36,26 +38,26 @@ export default function ContactList() {
         }
     };
 
-    const showClientDetails = (client) => {
+    const handleClientClick = (client) => {
         setSelectedClient(client)
     }
 
 
     return (
-        <div className="client-list-container">
-            <div className="client-list">
-                {clients.map((client, index) => (
-                    <div key={index} className="client-group">
-                        <button className="button-client" onClick={() => showClientDetails(client)}>
+        <div className={classes['client-list-container']}>
+            <div className={classes['client-list']}>
+                {clients.map((client, _id) => (
+                    <div key={_id} className={classes['client-group']}>
+                        <button className={classes['button-client']} onClick={() => handleClientClick(client)}>
                             {client.firstName} {client.lastName}
                         </button>
-                        <button className="button-delete" onClick={() => deleteClient(client._id)}>Delete</button>
+                        <button className={classes['button-delete']} onClick={() => deleteClient(client._id)}>Delete</button>
                     </div>
                 ))}
             </div>
-            <div className="msg">{serverMessage}</div>
+            <div className={classes.msg}>{serverMessage}</div>
             {selectedClient && (
-                <div className="client-details">
+                <div className={classes['client-details']}>
                     <h3>Client Details:</h3>
                     <p><strong>Name:</strong> {selectedClient.firstName}</p>
                     <p><strong>Last Name:</strong> {selectedClient.lastName}</p>

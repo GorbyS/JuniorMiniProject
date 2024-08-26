@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from './components/pages/Form';
+import Form from './components/pages/Form/Form';
 import './App.css';
-import Header from './components/Header';
-import ContactList from './components/pages/ContactList';
+import Header from './components/Header/Header';
+import ContactList from './components/pages/ContactList/ContactList';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Menu from './components/Menu';
-import Footer from './components/Footer';
+import Menu from './components/Menu/Menu';
+import Footer from './components/Footer/Footer';
 
 
 export default function App() {
